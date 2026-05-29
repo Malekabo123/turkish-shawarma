@@ -1,0 +1,9 @@
+.authentication .desktop-logo {
+  height: 3.5rem;
+}
+
+@media (max-width: 768px) {
+  .desktop-logo {
+    height: 2.5rem;
+  }
+}

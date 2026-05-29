@@ -1,0 +1,377 @@
+.user-message {
+  background-color: rgb(var(--light-rgb));
+}
+
+//Drag and drop
+.drop-list.cdk-drop-list-dragging .drag-item:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.drop-list {
+  padding-bottom: 1rem;
+
+  & > .drag-item {
+    cursor: grab;
+    width: 100%;
+
+    &:active {
+      cursor: grabbing;
+    }
+  }
+}
+
+.cdk-drag.drag-item {
+  background: inherit !important;
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+//Tour plan cards with fade effect at the bottom of card
+.fixed-height {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4rem; // Height of the fade effect
+    background: linear-gradient(rgba(255, 255, 255, 0), var(--gradient-shadow));
+    pointer-events: none; // Ensures it doesn't interfere with interactions
+    border-radius: 0 0 0.85rem 0.85rem;
+  }
+
+  .card-body {
+    overflow-y: auto;
+  }
+}
+
+.card-header-btn {
+  padding: 5px 10px !important;
+}
+
+//Prevent body from scrolling if a modal is open
+body.modal-open {
+  overflow-y: hidden !important;
+}
+
+.ngx-colors-overlay {
+  z-index: 20000 !important;
+}
+
+//RTL Support
+[dir="rtl"] {
+  .ti-chevron-left::before {
+    content: "\ea61";
+  }
+
+  .ti-chevron-right::before {
+    content: "\ea60";
+  }
+
+  .ti-caret-left::before {
+    content: "\eb5f";
+  }
+
+  .ti-caret-right::before {
+    content: "\eb5e";
+  }
+
+  .hour-range-arrow {
+    .ti-arrow-narrow-right::before {
+      content: "\ea1b";
+    }
+  }
+}
+
+.dragging * {
+  pointer-events: none;
+}
+
+.dragging .cdk-drag-dragging,
+.dragging .cdk-drop-list {
+  pointer-events: auto !important;
+}
+
+//Google maps info window
+.gm-style {
+  .gm-style-iw-c {
+    padding: 12px !important;
+    background-color: var(--custom-white);
+
+    .gm-style-iw-chr {
+      display: block;
+      position: relative;
+
+      & > * {
+        padding-top: 0;
+      }
+
+      .gm-ui-hover-effect {
+        position: absolute !important;
+        top: 0;
+        inset-inline-end: 0;
+
+        &,
+        span {
+          width: 20px !important;
+          height: 20px !important;
+          margin: 0 !important;
+        }
+
+        span {
+          background-color: rgb(var(--dark-rgb));
+        }
+      }
+    }
+  }
+
+  .gm-style-iw-tc::after {
+    background: var(--custom-white);
+  }
+
+  .gm-style-iw-d {
+    display: none;
+  }
+}
+
+.gmnoprint,
+.gm-style-cc {
+  display: none;
+}
+
+.gm-fullscreen-control {
+  border-radius: 6px !important;
+  width: 35px !important;
+  height: 35px !important;
+}
+
+//End Google maps
+
+.transition-all-300 {
+  transition: all 0.3s ease-in-out;
+}
+.transition-all-200 {
+  transition: all 0.2s ease-in-out;
+}
+.transition-all-100 {
+  transition: all 0.1s ease-in-out;
+}
+
+ul.disc {
+  list-style: disc;
+}
+
+.dropdown-menu {
+  min-width: auto;
+}
+
+.dropdown-toggle::before {
+  margin-inline-start: 0 !important;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.filters-number,
+.filters-number-v2,
+.filters-number-v3 {
+  position: absolute;
+  top: -1px;
+  inset-inline-end: -2px;
+  width: 15px;
+  height: 15px;
+  color: #fff;
+}
+
+.filters-number-v2 {
+  top: -5px;
+  inset-inline-end: -5px;
+}
+
+.filters-number-v3 {
+  width: 20px;
+  height: 20px;
+  top: -9px;
+  inset-inline-end: -7px;
+}
+
+label.is-invalid {
+  color: red;
+}
+
+.status-bar {
+  position: absolute;
+  height: 100%;
+  width: 4px;
+  top: 0;
+  inset-inline-start: 0;
+}
+
+.dashed-border {
+  border-style: dashed !important;
+}
+.dashed-info-border {
+  border: 1px dashed rgba(var(--info-rgb), 0.25) !important;
+}
+
+.progress-animate .my-progress-bar {
+  animation: 1.3s progress-animate !important;
+}
+
+@keyframes progress-animate {
+  0% {
+    width: 0;
+  }
+}
+@media (min-width: 576px) {
+  .modal-xxl {
+    --bs-modal-width: 90%;
+  }
+}
+@media (min-width: 992px) {
+  .modal-xxl {
+    --bs-modal-width: 950px;
+  }
+}
+@media (min-width: 1200px) {
+  .modal-xxl {
+    --bs-modal-width: 1140px;
+  }
+}
+@media (min-width: 1400px) {
+  .modal-xxl {
+    --bs-modal-width: 1370px;
+  }
+}
+
+.absence-days-badge {
+  inset-inline-end: -5px;
+  inset-block-end: -2px;
+  background-color: #f5f5f5;
+}
+
+.tippy-box[data-theme~="custom-tooltip"] {
+  background-color: var(--custom-white);
+  color: var(--default-text-color);
+  border: 1px solid var(--default-border);
+  box-shadow: 0 0.5rem 1rem rgba(var(--dark-rgb), 0.15);
+
+  .tippy-arrow::before {
+    border-top-color: var(--custom-white);
+  }
+}
+
+.shepherd-header {
+  border-radius: var(--bs-border-radius-sm) !important;
+  background-color: transparent !important;
+
+  .shepherd-title {
+    flex: auto;
+  }
+}
+
+.cdk-overlay-container {
+  z-index: 10000;
+}
+.cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
+  opacity: 0.7;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin generate-zindex-classes() {
+  @for $i from 4 through 15 {
+    .z-#{($i)} {
+      z-index: #{$i};
+    }
+  }
+}
+
+@include generate-zindex-classes();
+
+.text-underline {
+  text-decoration: underline;
+}
+
+.success-icon-circle {
+  background: linear-gradient(135deg, #4f46e6 0%, #7c3aed 100%);
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    inset-inline-start: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+    height: 120%;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #4f46e6 0%, #7c3aed 100%);
+    opacity: 0.12;
+    animation: pulse-ring 2.4s ease-out infinite;
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: translate(-50%, -50%) scale(0.95);
+    opacity: 0.18;
+  }
+  60% {
+    transform: translate(-50%, -50%) scale(1.15);
+    opacity: 0.06;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.95);
+    opacity: 0.18;
+  }
+}
+
+.marker {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+
+  &.staff-marker {
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25));
+    border-color: #fff !important;
+
+    i {
+      color: #fff !important;
+    }
+  }
+
+  &.visit-marker {
+    background-color: rgba(var(--bs-light-rgb), 1) !important;
+
+    i {
+      color: #2c3e50 !important;
+    }
+  }
+}
+
+.marker::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -8px;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid currentColor;
+  z-index: -1;
+}

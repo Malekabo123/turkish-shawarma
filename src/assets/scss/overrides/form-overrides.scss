@@ -1,0 +1,123 @@
+.flatpickr-day {
+  margin-bottom: 3px !important;
+}
+
+@media (max-width: 575.98px) {
+  .input-group > .form-control,
+  .input-group > .form-floating,
+  .input-group > .form-select {
+    width: 100%;
+    margin-bottom: 7px !important;
+  }
+}
+
+.flatpickr-time .flatpickr-am-pm {
+  margin-inline-end: 1rem !important;
+}
+
+.input-group {
+  flex-wrap: nowrap !important;
+}
+
+.flatpickr-time .flatpickr-am-pm {
+  margin-inline-end: 1rem !important;
+}
+
+[dir="rtl"] {
+  .noUi-origin {
+    transform: none !important;
+  }
+}
+
+.form-floating #floatingSelect {
+  padding: 1rem 0px 0 0.75rem !important;
+}
+
+.form-floating #floatingSelectGrid {
+  padding: 1rem 0px 0 0.75rem !important;
+}
+
+[dir="rtl"] {
+  .form-floating #floatingSelect {
+    padding: 1rem 1rem 0 0.75rem !important;
+  }
+
+  .form-floating #floatingSelectGrid {
+    padding: 1rem 1rem 0 0.75rem !important;
+  }
+}
+
+[dir="rtl"] {
+  .form-select {
+    background-position: left 0.75rem center;
+  }
+}
+
+.custom-form-group .form-control {
+  padding-inline-end: 9rem !important;
+  padding-inline-start: 1.25rem;
+  line-height: 2.25;
+}
+
+.flatpickr-current-month span.cur-month {
+  padding: 5px !important;
+}
+
+@media (max-width: 575.98px) {
+  .input-group > .form-control,
+  .input-group > .form-floating,
+  .input-group > .form-select {
+    width: 100%;
+    margin-bottom: 0px !important;
+  }
+}
+
+.input-group {
+  .form-select {
+    padding-inline-start: 0.5rem;
+  }
+}
+
+//Date picker
+.flatpickr-day.today:not(.selected) {
+  background-color: transparent !important;
+  color: rgb(var(--dark-rgb)) !important;
+}
+
+.inline-date-picker {
+  .flatpickr-input {
+    display: none;
+  }
+
+  .flatpickr-calendar {
+    margin-inline: auto !important;
+  }
+}
+
+//Dropzone
+.custom-dropzone {
+  ngx-dropzone-preview {
+    ngx-dropzone-remove-badge {
+      z-index: 999;
+    }
+  }
+}
+
+.hidden-input {
+  pointer-events: none;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: var(--default-text-color) !important;
+  -webkit-box-shadow: 0 0 0 1000px var(--form-control-bg) inset !important;
+  caret-color: var(--default-text-color) !important;
+}

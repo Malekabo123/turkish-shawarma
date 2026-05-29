@@ -1,0 +1,132 @@
+.width-max-content {
+  width: max-content !important;
+}
+
+.max-width-max-content {
+  max-width: max-content !important;
+}
+
+.min-width-max-content {
+  min-width: max-content;
+}
+
+.height-max-content {
+  height: max-content !important;
+}
+
+.card.custom-card .card-footer,
+.card.custom-card .card-header {
+  padding: 0.7rem !important;
+}
+
+@media (max-width: 1200px) {
+  .max-width-xl {
+    width: max-content !important;
+  }
+}
+
+.flex-1 {
+  flex: 1;
+}
+.flex-sm-1 {
+  @media (max-width: 575px) {
+    flex: 1;
+  }
+}
+
+.limited-lines,
+.limited-lines-2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word !important;
+  word-break: break-word !important;
+}
+
+.limited-lines {
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+}
+
+.limited-lines-2 {
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
+@mixin generate-translateY-classes($min, $max) {
+  @for $i from $min through $max {
+    $sign: if($i < 0, "-", "");
+    .transform-y#{$sign}#{abs($i)} {
+      transform: translateY(#{$i}px);
+    }
+    .transform-x#{$sign}#{abs($i)} {
+      transform: translateX(#{$i}px);
+    }
+  }
+}
+
+@include generate-translateY-classes(-15, 15);
+
+// Mixin to generate width and min-width classes
+@mixin generate-width-utilities($min, $max, $step: 1) {
+  @for $i from $min through $max {
+    @if $i % $step == 0 {
+      .width-#{$i} {
+        width: #{$i}px !important;
+      }
+
+      .min-width-#{$i} {
+        min-width: #{$i}px !important;
+      }
+
+      .max-width-#{$i} {
+        max-width: #{$i}px !important;
+      }
+
+      .height-#{$i} {
+        height: #{$i}px !important;
+      }
+
+      .min-height-#{$i} {
+        min-height: #{$i}px !important;
+      }
+
+      .max-height-#{$i} {
+        max-height: #{$i}px !important;
+      }
+    }
+  }
+}
+@include generate-width-utilities(1, 1000);
+
+@media (max-width: 575px) {
+  .w-sm-100 {
+    width: 100% !important;
+  }
+  .w-sm-75 {
+    width: 75% !important;
+  }
+  .w-sm-50 {
+    width: 50% !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .w-md-100 {
+    width: 100% !important;
+  }
+  .w-md-75 {
+    width: 75% !important;
+  }
+  .w-md-50 {
+    width: 50% !important;
+  }
+}
+
+.m-x-2 {
+  margin-inline: 2px !important;
+}
+.m-t-2 {
+  margin-top: 2px !important;
+}

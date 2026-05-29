@@ -1,0 +1,419 @@
+//Full Calendar
+.custom-calendar .fc-scrollgrid-sync-table > tbody > tr {
+  height: 100px !important;
+  min-height: 100px !important;
+  max-height: 100px !important;
+}
+
+.fc .fc-daygrid-day {
+  &.fc-day-today {
+    background-color: transparent !important;
+  }
+
+  .fc-daygrid-day-number {
+    user-select: none;
+  }
+}
+
+.fc-theme-standard .fc-scrollgrid {
+  border-inline: 0 !important;
+  border-bottom: 0 !important;
+}
+
+.fc-day-today .fc-daygrid-day-number {
+  background-color: #444;
+  color: white;
+  border-radius: 50%;
+  width: 27px;
+  height: 27px;
+  margin: 1px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.highlight-day-number {
+  background-color: #4d5ddb99;
+  color: white;
+  border-radius: 50%;
+  width: 27px;
+  height: 27px;
+  margin: 1px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.fc .fc-scrollgrid-section-sticky > * {
+  background-color: rgba(var(--custom-white), 1);
+  position: relative;
+}
+
+.fc-toolbar-title {
+  font-weight: 500;
+}
+
+.fc-v-event {
+  border: 0 !important;
+  padding: 4px;
+}
+
+.fc-daygrid-event .fc-event-title {
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+.fc .fc-timegrid-col.fc-day-today {
+  background-color: rgba(134, 153, 163, 0.05);
+}
+
+.fc-v-event,
+.fc-h-event,
+.fc-timegrid-more-link {
+  margin: 2px 1px;
+}
+
+.fc-h-event.bg-transparent {
+  background-color: transparent !important;
+}
+
+.fc-popover.fc-more-popover {
+  background: var(--custom-white);
+  border-color: rgb(var(--light-rgb));
+}
+
+.clickable-calendar {
+  .fc-daygrid-day,
+  .fc-timegrid-allday-cell {
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+
+    &:hover {
+      background-color: rgba(var(--info-rgb), 0.04) !important;
+    }
+  }
+}
+
+.timeline-add-cursor .fc-scroller-harness .fc-timeline-body {
+  cursor: copy;
+}
+
+.timeline-cursor-pointer .fc-scroller-harness .fc-timeline-body {
+  cursor: pointer;
+}
+
+.fc-datagrid-cell-cushion.fc-scrollgrid-sync-inner:has(.fc-datagrid-expander) {
+  display: flex;
+  gap: 8px;
+
+  .fc-datagrid-expander {
+    margin-top: 8px;
+  }
+
+  .fc-datagrid-cell-main {
+    min-width: 0;
+    width: 100%;
+  }
+}
+
+.no-children-resource .fc-datagrid-expander-placeholder {
+  display: none; // Hide the placeholder for resources without children
+}
+
+.fc th .fc-datagrid-expander {
+  display: none;
+}
+
+.fc-event:focus::after {
+  background: transparent;
+}
+
+.fc-datagrid-cell-cushion.fc-scrollgrid-sync-inner:has(.version-resource) {
+  .fc-datagrid-cell-main {
+    width: 100%;
+  }
+
+  .fc-icon,
+  .fc-datagrid-expander {
+    display: none;
+  }
+}
+
+.bounce-event:hover {
+  filter: brightness(0.95);
+  transform: translateY(-1px);
+  box-shadow: 0 0.3rem 1rem rgba(var(--dark-rgb), 0.15) !important;
+}
+
+.fc .fc-toolbar {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+@media (max-width: 767.98px) {
+  .custom-calendar.fc {
+    font-size: 0.9em;
+
+    .fc-toolbar {
+      display: flex !important;
+      gap: 1rem;
+      flex-wrap: wrap;
+
+      .fc-toolbar-chunk:nth-child(2) {
+        order: 1;
+        text-align: center;
+        width: 100%;
+      }
+    }
+  }
+
+  .custom-timeline-calendar.fc {
+    font-size: 0.9em;
+
+    .fc-toolbar {
+      display: flex !important;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+  }
+
+  .fc .fc-toolbar {
+    display: flex !important;
+  }
+}
+
+@media (max-width: 450px) {
+  .custom-timeline-calendar.fc .fc-toolbar {
+    .fc-toolbar-chunk:nth-child(1) {
+      order: 1;
+      text-align: center;
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .custom-calendar.fc {
+    font-size: 0.89em;
+
+    .fc-toolbar .fc-today-button {
+      display: none;
+    }
+  }
+}
+
+//Event colors
+.fc-h-event,
+.fc-v-event,
+.fc-timeline-bg .fc-bg-event,
+.fc .fc-daygrid-day.fc-day-today {
+  // Mixin to generate color variants
+  @mixin generate-color-variants($name, $rgb, $color) {
+    @for $i from 1 through 19 {
+      $opacity: $i * 0.05;
+      $suffix: $i * 50;
+
+      &.bd-#{$name}-#{$suffix} {
+        background-color: rgba($rgb, $opacity) !important;
+        .fc-event-title {
+          color: if($i >= 12, #fff, rgba($color, 1)) !important;
+        }
+      }
+    }
+
+    // Solid color variant
+    &.bd-#{$name} {
+      background-color: rgb($rgb) !important;
+      .fc-event-title {
+        color: #fff !important;
+      }
+    }
+  }
+
+  // Colors with RGB values
+  @include generate-color-variants(
+    "purple",
+    var(--purple-rgb),
+    var(--purple-color)
+  );
+  @include generate-color-variants("pink", var(--pink-rgb), var(--pink-color));
+  @include generate-color-variants(
+    "orange",
+    var(--orange-rgb),
+    var(--orange-color)
+  );
+  @include generate-color-variants("teal", var(--teal-rgb), var(--teal-color));
+  @include generate-color-variants("red", var(--red-rgb), var(--red-color));
+  @include generate-color-variants("blue", var(--blue-rgb), var(--blue-color));
+  @include generate-color-variants(
+    "green",
+    var(--green-rgb),
+    var(--green-color)
+  );
+  @include generate-color-variants("cyan", var(--cyan-rgb), var(--cyan-color));
+  @include generate-color-variants(
+    "indigo",
+    var(--indigo-rgb),
+    var(--indigo-color)
+  );
+  @include generate-color-variants("gray", var(--gray-rgb), var(--gray-color));
+  @include generate-color-variants(
+    "yellow",
+    var(--yellow-rgb),
+    var(--yellow-color)
+  );
+
+  // Single color classes without variants
+  &.bd-amber {
+    background-color: rgb(252, 185, 0);
+  }
+
+  &.bd-rose {
+    background-color: rgb(235, 20, 76);
+  }
+}
+
+//Dashboard Appointments buttons
+.dashboard-appointments-calendar {
+  .fc {
+    .fc-today-button,
+    .fc-dayGridMonth-button,
+    .fc-timeGridWeek-button,
+    .fc-timeGridDay-button,
+    .fc-prev-button,
+    .fc-next-button {
+      background-color: rgba(var(--success-rgb), 0.2) !important;
+      color: rgb(var(--dark-rgb)) !important;
+    }
+
+    .fc-button-active {
+      background-color: rgba(var(--success-rgb), 1) !important;
+      color: rgb(var(--light-rgb)) !important;
+    }
+  }
+}
+
+//Dashboard Prescriptions buttons
+.dashboard-prescriptions-calendar {
+  .fc {
+    .fc-today-button,
+    .fc-dayGridMonth-button,
+    .fc-timeGridWeek-button,
+    .fc-timeGridDay-button,
+    .fc-prev-button,
+    .fc-next-button {
+      background-color: rgba(var(--teal-rgb), 0.2) !important;
+      color: rgb(var(--dark-rgb)) !important;
+    }
+
+    .fc-button-active {
+      background-color: rgba(var(--teal-rgb), 0.9) !important;
+      color: rgb(var(--light-rgb)) !important;
+    }
+  }
+}
+
+//Dashboard Clients absence buttons
+.dashboard-clients-absence-calendar {
+  .fc {
+    .fc-today-button,
+    .fc-dayGridMonth-button,
+    .fc-timeGridWeek-button,
+    .fc-timeGridDay-button,
+    .fc-prev-button,
+    .fc-next-button {
+      background-color: rgba(var(--orange-rgb), 0.2) !important;
+      color: rgb(var(--dark-rgb)) !important;
+    }
+
+    .fc-button-active {
+      background-color: rgba(var(--orange-rgb), 0.9) !important;
+      color: #fff !important;
+    }
+  }
+}
+
+//Dashboard Clients absence buttons
+.dashboard-birthdays-calendar {
+  .fc {
+    .fc-today-button,
+    .fc-dayGridMonth-button,
+    .fc-timeGridWeek-button,
+    .fc-timeGridDay-button,
+    .fc-prev-button,
+    .fc-next-button {
+      background-color: rgba(var(--indigo-rgb), 0.2) !important;
+      color: rgb(var(--dark-rgb)) !important;
+    }
+
+    .fc-button-active {
+      background-color: rgba(var(--indigo-rgb), 0.9) !important;
+      color: #fff !important;
+    }
+  }
+}
+
+//Other calendars buttons
+.fc {
+  .fc-today-button,
+  .fc-dayGridMonth-button,
+  .fc-timeGridWeek-button,
+  .fc-timeGridDay-button,
+  .fc-prev-button,
+  .fc-next-button {
+    background-color: rgba(var(--primary-rgb), 0.2) !important;
+    color: rgb(var(--dark-rgb)) !important;
+    border-color: transparent !important;
+  }
+
+  .fc-button-active {
+    background-color: rgba(var(--primary-rgb), 0.9) !important;
+    color: #fff !important;
+  }
+}
+
+.fc .centered-cell .fc-datagrid-cell-frame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .fc-datagrid-cell-cushion {
+    width: 100%;
+  }
+}
+
+.fc-event-dragging-global {
+  .fc-event:not(.fc-event-dragging) {
+    pointer-events: none;
+  }
+
+  .fc-event.fc-event-dragging {
+    opacity: 0 !important;
+    pointer-events: none;
+  }
+
+  .my-event-dragging .fc-event-title {
+    box-shadow: var(--bs-box-shadow) !important;
+  }
+}
+
+.fc-resourceTimelineMonth-view > .fc-scrollgrid,
+.fc-dayGridMonth-view > .fc-scrollgrid {
+  border-top: 0 !important;
+}
+
+.fc .fc-scrollgrid-section-sticky > * {
+  background: var(--custom-white);
+  position: sticky;
+  z-index: 4 !important;
+  border-top: 1px solid var(--default-border) !important;
+}
+
+.fc .fc-scrollgrid-sync-table .staff-resource-lane {
+  border-top: 3px solid var(--default-border) !important;
+}

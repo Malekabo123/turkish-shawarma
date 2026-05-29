@@ -1,1 +1,220 @@
-/* You can add global styles to this file, and also import other style files */
+// ─── Global Reset & Base ───────────────────────────────────────────────────
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Tajawal', 'Cairo', sans-serif;
+  background-color: #170312;
+  color: #f5f3f0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  direction: rtl;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+// ─── CSS Custom Properties ────────────────────────────────────────────────
+:root {
+  --color-primary:    #D81E5B;
+  --color-secondary:  #F0544F;
+  --color-accent:     #F5F3BB;
+  --color-dark:       #170312;
+  --color-dark-2:     #33032F;
+  --color-dark-3:     #1e0419;
+  --color-text-muted: rgba(245, 243, 240, 0.55);
+  --color-border:     rgba(255, 255, 255, 0.08);
+
+  --grad-fire:        linear-gradient(135deg, #F0544F 0%, #D81E5B 100%);
+  --grad-fire-h:      linear-gradient(90deg,  #F0544F 0%, #D81E5B 100%);
+  --grad-dark:        linear-gradient(180deg, #170312 0%, #33032F 100%);
+  --grad-glow-1:      radial-gradient(circle, rgba(240, 84, 79, 0.45), transparent 70%);
+  --grad-glow-2:      radial-gradient(circle, rgba(216, 30, 91, 0.35), transparent 70%);
+
+  --glass-bg:         rgba(255, 255, 255, 0.04);
+  --glass-border:     rgba(255, 255, 255, 0.09);
+  --glass-blur:       blur(24px);
+
+  --shadow-glow:      0 0 60px rgba(216, 30, 91, 0.25);
+  --shadow-card:      0 24px 60px rgba(0, 0, 0, 0.5);
+  --shadow-fire:      0 8px 32px rgba(240, 84, 79, 0.35);
+
+  --radius-sm:   12px;
+  --radius-md:   20px;
+  --radius-lg:   28px;
+  --radius-xl:   40px;
+  --radius-full: 9999px;
+
+  --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+// ─── Typography Utilities ─────────────────────────────────────────────────
+.font-display { font-family: 'Cairo', sans-serif; }
+.font-body    { font-family: 'Tajawal', sans-serif; }
+
+.text-gradient {
+  background: var(--grad-fire);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-muted-custom { color: var(--color-text-muted); }
+
+// ─── Glassmorphism ────────────────────────────────────────────────────────
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+}
+
+// ─── Gradient Helpers ─────────────────────────────────────────────────────
+.bg-dark-custom    { background-color: var(--color-dark); }
+.bg-dark-2         { background-color: var(--color-dark-2); }
+.gradient-fire     { background: var(--grad-fire); }
+.gradient-fire-h   { background: var(--grad-fire-h); }
+
+// ─── Button Base ──────────────────────────────────────────────────────────
+.btn-fire {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2.2rem;
+  border: none;
+  border-radius: var(--radius-full);
+  background: var(--grad-fire);
+  color: #fff;
+  font-family: 'Tajawal', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-fire);
+  white-space: nowrap;
+  text-decoration: none;
+
+  &:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 16px 48px rgba(240, 84, 79, 0.5);
+    color: #fff;
+  }
+
+  &:active {
+    transform: translateY(-1px) scale(1);
+  }
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2.2rem;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  color: #fff;
+  font-family: 'Tajawal', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+  text-decoration: none;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-3px);
+    color: #fff;
+  }
+}
+
+// ─── Section Utilities ────────────────────────────────────────────────────
+.section-pad {
+  padding: 6rem 0;
+
+  @media (max-width: 768px) {
+    padding: 4rem 0;
+  }
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 1.2rem;
+  border-radius: var(--radius-full);
+  background: rgba(216, 30, 91, 0.15);
+  border: 1px solid rgba(216, 30, 91, 0.3);
+  color: #F0544F;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  margin-bottom: 1.25rem;
+}
+
+.section-title {
+  font-family: 'Cairo', sans-serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.2;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.section-sub {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: var(--color-text-muted);
+  line-height: 1.8;
+  max-width: 560px;
+}
+
+// ─── Scroll Animations ────────────────────────────────────────────────────
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up-delay-1 { transition-delay: 0.1s; }
+.fade-up-delay-2 { transition-delay: 0.2s; }
+.fade-up-delay-3 { transition-delay: 0.3s; }
+.fade-up-delay-4 { transition-delay: 0.4s; }
+
+// ─── Divider ──────────────────────────────────────────────────────────────
+.divider-fire {
+  width: 60px;
+  height: 4px;
+  background: var(--grad-fire);
+  border-radius: var(--radius-full);
+  margin: 1rem 0 1.5rem;
+}
+
+// ─── No select for decorative elements ───────────────────────────────────
+.no-select {
+  user-select: none;
+  pointer-events: none;
+}

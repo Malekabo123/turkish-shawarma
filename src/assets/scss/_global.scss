@@ -1,0 +1,53 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  font-weight: 400;
+  font-style: normal;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+ul {
+  padding: 0;
+  margin: 0;
+  font-style: normal;
+}
+
+img {
+  width: 100%;
+}
+
+button {
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+@import "./overrides/color-overrides";
+@import "./overrides/calendar-overrides";
+@import "./overrides/form-overrides";
+@import "./overrides/custom-overrides";
+@import "./overrides/other-overrides";
+@import "./overrides/select-overrides";
+@import "./overrides/size-overrides";
+@import "./overrides/tooltip-overrides";
