@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <title>شاورما تركية</title>
+  <script>
+    // GitHub Pages SPA redirect trick.
+    // Stores the full URL in sessionStorage then redirects to the root,
+    // where index.html picks it up and replaces the history entry.
+    var path = window.location.pathname;
+    var repoSegment = path.split('/').slice(0, 2).join('/'); // e.g. /turkish-shawarma
+    sessionStorage.setItem('spa-redirect', window.location.href);
+    window.location.replace(repoSegment + '/');
+  </script>
+</head>
+<body></body>
+</html>

@@ -13,6 +13,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
+  <script>
+    // Restore URL after 404.html redirect (GitHub Pages SPA fix).
+    (function () {
+      var redirect = sessionStorage.getItem('spa-redirect');
+      if (redirect) {
+        sessionStorage.removeItem('spa-redirect');
+        window.history.replaceState(null, '', redirect);
+      }
+    })();
+  </script>
   <app-root></app-root>
 </body>
 </html>
